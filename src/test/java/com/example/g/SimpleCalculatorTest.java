@@ -45,7 +45,14 @@ class SimpleCalculatorTest {
     @Test
     @DisplayName("Allow the Add method to handle new lines between numbers instead of commas")
     void allowTheAddMethodToHandleNewLinesBetweenNumbersInsteadOfCommas() {
-        int result1 = calculator.add("1\n2,3");
-        assertThat(result1).as("Return 6").isEqualTo(6);
+        int result = calculator.add("1\n2,3");
+        assertThat(result).as("Return 6").isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("Support different delimiters")
+    void supportDifferentDelimiters() {
+        int result = calculator.add("//;\n1;2");
+        assertThat(result).as("Return 3").isEqualTo(3);
     }
 }
