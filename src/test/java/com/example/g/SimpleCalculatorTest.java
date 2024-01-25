@@ -34,4 +34,11 @@ class SimpleCalculatorTest {
         int result = calculator.add("1,2");
         assertThat(result).as("Return 3").isEqualTo(3);
     }
+
+   @Test
+   @DisplayName("Assure that method can handle an unknown amount of numbers")
+   void assureThatMethodCanHandleAnUnknownAmountOfNumbers() {
+    int result = calculator.add("1,2,3,4,5");
+    assertThat(result).as("Return 15").isEqualTo(15);
+   }
 }
