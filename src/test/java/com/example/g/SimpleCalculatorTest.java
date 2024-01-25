@@ -27,4 +27,11 @@ class SimpleCalculatorTest {
         int result = calculator.add("1");
         assertThat(result).as("Return 1").isEqualTo(1);
     }
+
+    @Test
+    @DisplayName("Assure thant on string 1,2 return be sum of 1 and 2")
+    void assureThantOnString12ReturnBeSumOf1And2() {
+        int result = calculator.add("1,2");
+        assertThat(result).as("Return 3").isEqualTo(3);
+    }
 }
