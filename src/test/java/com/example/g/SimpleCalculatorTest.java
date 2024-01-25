@@ -72,4 +72,11 @@ class SimpleCalculatorTest {
         int result = calculator.add("//;\n1001;2");
         assertThat(result).as("Return 2").isEqualTo(2);
     }
+
+    @Test
+    @DisplayName("Delimiters can be of any length with the following format")
+    void delimitersCanBeOfAnyLengthWithTheFollowingFormat() {
+        int result = calculator.add("//[***]\n1***2***3");
+        assertThat(result).as("Return 6").isEqualTo(6);
+    }
 }
