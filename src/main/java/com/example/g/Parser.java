@@ -11,7 +11,6 @@ public class Parser {
     public static List<Integer> parse(String numbers) {
         if (numbers.isEmpty()) return List.of(0);
         if (numbers.length() == 1) return List.of(parseInt(numbers));
-
         String delimiter = "[\n,]";
 
         if (numbers.startsWith("//")) {
@@ -26,7 +25,9 @@ public class Parser {
         List<Integer> integerChunks = new ArrayList<>();
 
         for (String chunk : chunks) {
-            integerChunks.add(parseInt(chunk));
+            int value = parseInt(chunk);
+            if (value < 0) throw  new RuntimeException("negatives not allowed");
+            integerChunks.add(value);
         }
 
         return integerChunks;

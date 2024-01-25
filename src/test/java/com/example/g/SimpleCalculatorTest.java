@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class SimpleCalculatorTest {
     private Calculator calculator;
@@ -54,5 +55,14 @@ class SimpleCalculatorTest {
     void supportDifferentDelimiters() {
         int result = calculator.add("//;\n1;2");
         assertThat(result).as("Return 3").isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("Calling Add with Negative Number will throw an exception")
+    void callingAddWithNegativeNumberWillThrowAnException() {
+
+        assertThatThrownBy(() -> calculator.add("//;\n-1;2"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("negatives not allowed");
     }
 }
