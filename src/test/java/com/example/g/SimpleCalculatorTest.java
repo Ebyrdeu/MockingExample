@@ -79,4 +79,11 @@ class SimpleCalculatorTest {
         int result = calculator.add("//[***]\n1***2***3");
         assertThat(result).as("Return 6").isEqualTo(6);
     }
+
+    @Test
+    @DisplayName("Allow multiple delimiters")
+    void allowMultipleDelimiters() {
+        int result = calculator.add("//[*][%]\n1*2%3");
+        assertThat(result).as("Return 6").isEqualTo(6);
+    }
 }
