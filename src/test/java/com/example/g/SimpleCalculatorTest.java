@@ -35,10 +35,17 @@ class SimpleCalculatorTest {
         assertThat(result).as("Return 3").isEqualTo(3);
     }
 
-   @Test
-   @DisplayName("Assure that method can handle an unknown amount of numbers")
-   void assureThatMethodCanHandleAnUnknownAmountOfNumbers() {
-    int result = calculator.add("1,2,3,4,5");
-    assertThat(result).as("Return 15").isEqualTo(15);
-   }
+    @Test
+    @DisplayName("Assure that method can handle an unknown amount of numbers")
+    void assureThatMethodCanHandleAnUnknownAmountOfNumbers() {
+        int result = calculator.add("1,2,3,4,5");
+        assertThat(result).as("Return 15").isEqualTo(15);
+    }
+
+    @Test
+    @DisplayName("Allow the Add method to handle new lines between numbers instead of commas")
+    void allowTheAddMethodToHandleNewLinesBetweenNumbersInsteadOfCommas() {
+        int result1 = calculator.add("1\n2,3");
+        assertThat(result1).as("Return 6").isEqualTo(6);
+    }
 }

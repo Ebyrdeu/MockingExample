@@ -11,7 +11,7 @@ public class SimpleCalculator implements Calculator {
         if (numbers.isEmpty()) return List.of(0);
         if (numbers.length() == 1) return List.of(parseInt(numbers));
 
-        String[] chunks  = numbers.split(",");
+        String[] chunks  = numbers.split("[\n,]");
 
         List<Integer> integerChunks = new ArrayList<>();
 
