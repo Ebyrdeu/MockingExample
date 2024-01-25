@@ -86,4 +86,12 @@ class SimpleCalculatorTest {
         int result = calculator.add("//[*][%]\n1*2%3");
         assertThat(result).as("Return 6").isEqualTo(6);
     }
+
+    @Test
+    @DisplayName("Make sure you can also handle multiple delimiters with length longer than one char")
+    void makeSureYouCanAlsoHandleMultipleDelimitersWithLengthLongerThanOneChar() {
+
+        int result = calculator.add("//[***][%%%][;;;]\n1***2%%%3;;;4");
+        assertThat(result).as("Return 10").isEqualTo(10);
+    }
 }
