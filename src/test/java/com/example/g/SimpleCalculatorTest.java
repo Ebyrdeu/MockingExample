@@ -20,4 +20,11 @@ class SimpleCalculatorTest {
         int result = calculator.add("");
         assertThat(result).as("Return 0").isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("Assure that on string 1 return be 1 as int")
+    void assureThatOnString1ReturnBe1AsInt() {
+        int result = calculator.add("1");
+        assertThat(result).as("Return 1").isEqualTo(1);
+    }
 }
