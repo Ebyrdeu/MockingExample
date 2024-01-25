@@ -27,6 +27,7 @@ public class Parser {
         for (String chunk : chunks) {
             int value = parseInt(chunk);
             if (value < 0) throw  new RuntimeException("negatives not allowed");
+            if (value > 1000) value  = 0;
             integerChunks.add(value);
         }
 

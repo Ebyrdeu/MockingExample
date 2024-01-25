@@ -65,4 +65,11 @@ class SimpleCalculatorTest {
                 .isInstanceOf(RuntimeException.class)
                 .hasMessage("negatives not allowed");
     }
+
+    @Test
+    @DisplayName("Numbers bigger than 1000 should be ignored")
+    void numbersBiggerThan1000ShouldBeIgnored() {
+        int result = calculator.add("//;\n1001;2");
+        assertThat(result).as("Return 2").isEqualTo(2);
+    }
 }
