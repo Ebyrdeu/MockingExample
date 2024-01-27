@@ -1,5 +1,6 @@
 package com.example.vg;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -7,7 +8,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class GameTest {
-    private final Game game = new Game();
+    private Game game ;
+
+    @BeforeEach()
+    void init() {
+        game = new Game();
+    }
 
     @Test
     @DisplayName("On one roll return score")
@@ -34,4 +40,11 @@ class GameTest {
 
         assertThatThrownBy(game::score).isInstanceOf(IllegalArgumentException.class).hasMessage("Negatives not allowed");
     }
+@Test
+@DisplayName("Throw exception when points execl 10")
+void throwExceptionWhenPointsExecl10() {
+    game.roll(11);
+
+    assertThatThrownBy(game::score).isInstanceOf(IllegalArgumentException.class).hasMessage("More than 10 pins per roll not allowed");
+}
 }
