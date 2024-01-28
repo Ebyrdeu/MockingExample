@@ -25,14 +25,14 @@ class GameTest {
     @Test
     @DisplayName("On two rolls return sum of this rolls")
     void onTwoRollsReturnSumOfThisRolls() {
-        setCustomRolls(2, 3, 2);
+        setCustomRolls(3, 2);
         assertThat(game.score()).as("Return 5").isEqualTo(5);
     }
 
     @Test
     @DisplayName("Throw error on negative numbers")
     void throwErrorOnNegativeNumbers() {
-        setCustomRolls(3, 10, -5, -4);
+        setCustomRolls(10, -5, -4);
         assertThatThrownBy(game::score).isInstanceOf(IllegalArgumentException.class).hasMessage("Negatives not allowed");
     }
 
@@ -62,7 +62,7 @@ class GameTest {
     @Test
     @DisplayName("Assure that full game is working")
     void assureThatFullGameIsWorking() {
-        setCustomRolls(20, 10, 3, 2, 5, 5, 3, 2, 5, 4, 2, 1, 0, 0, 6, 4, 2, 4, 10, 8, 2);
+        setCustomRolls(10, 3, 2, 5, 5, 3, 2, 5, 4, 2, 1, 0, 0, 6, 4, 2, 4, 10, 8, 2);
         assertThat(game.score()).as("Hdcp score 88").isEqualTo(88);
     }
 
@@ -72,9 +72,9 @@ class GameTest {
         }
     }
 
-    private void setCustomRolls(int rolls, int... pins) {
-        for (int i = 0; i < rolls; i++) {
-            game.roll(pins[i]);
+    private void setCustomRolls(int... pins) {
+        for (int pin : pins) {
+            game.roll(pin);
         }
     }
 }
